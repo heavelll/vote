@@ -6,7 +6,7 @@ const svgCaptcha = require("svg-captcha")
 const path = require("path")
 const cors = require('cors')
 const app = express()
-const PORT = 8888
+const PORT = 80
 const moment = require('moment');
 // import moment from 'moment'
 // import 'moment/locale/zh-cn'
@@ -387,6 +387,6 @@ app.post('/conflict/email', async (req, res, next) => {
 })
 
 server.listen(PORT, () => {
-  console.log('listen on port', PORT);
+  console.log('listen on port', 80);
   console.log(moment().format('LLLL'));
 })
