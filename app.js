@@ -27,7 +27,7 @@ server.listen(80);
 const servers = https.createServer({
   cert: fs.readFileSync('/root/.acme.sh/vote.heavelll.me/vote.heavelll.me.cer'),
   key: fs.readFileSync('/root/.acme.sh/vote.heavelll.me/vote.heavelll.me.key')}, app);
-const wss = new WebSocket.Server({servers});
+const wss = new WebSocket.Server({server: servers});
 
 //当前已建立的websocket的映射
 var voteIdMapWs = {}
