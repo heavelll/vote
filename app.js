@@ -2,20 +2,23 @@ const express = require("express")
 const cookieParser = require("cookie-parser")
 const multer = require("multer")
 const fsp = require("fs").promises
+const fs = require("fs")
 const svgCaptcha = require("svg-captcha")
 const path = require("path")
 const cors = require('cors')
 const app = express()
-const PORT = 80
+const PORT = 443
 const moment = require('moment');
 // import moment from 'moment'
 // import 'moment/locale/zh-cn'
 require('moment/locale/zh-cn')
 let uploader = multer({ dest: 'uploads/' });
-const http = require('http')
+const https = require('https')
 const WebSocket = require('ws')
 
-const server = http.createServer(app);
+const server = https.createServer({
+  cert: fs.readFileSync('/root/.acme.sh/vote.heavelll.me/vote.heavelll.me.cer'),
+  key: fs.readFileSync('/root/.acme.sh/vote.heavelll.me/vote.heavelll.me.key')},app);
 const wss = new WebSocket.Server({server});
 
 //当前已建立的websocket的映射
@@ -387,6 +390,6 @@ app.post('/conflict/email', async (req, res, next) => {
 })
 
 server.listen(PORT, () => {
-  console.log('listen on port', 80);
+  console.log('listen on port', 443);
   console.log(moment().format('LLLL'));
 })
