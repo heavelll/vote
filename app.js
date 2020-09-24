@@ -13,13 +13,19 @@ const moment = require('moment');
 // import 'moment/locale/zh-cn'
 require('moment/locale/zh-cn')
 let uploader = multer({ dest: 'uploads/' });
+const http = require('http')
 const https = require('https')
 const WebSocket = require('ws')
 
-const server = https.createServer({
+const server = http.createServer((req, res) => {
+  res.writeHead(302, {'Location': `https://vote.heavelll.me${req.url}`});
+  res.end();
+})
+
+const servers = https.createServer({
   cert: fs.readFileSync('/root/.acme.sh/vote.heavelll.me/vote.heavelll.me.cer'),
   key: fs.readFileSync('/root/.acme.sh/vote.heavelll.me/vote.heavelll.me.key')}, app);
-const wss = new WebSocket.Server({server});
+const wss = new WebSocket.Server({servers});
 
 //当前已建立的websocket的映射
 var voteIdMapWs = {}
@@ -389,7 +395,7 @@ app.post('/conflict/email', async (req, res, next) => {
   }
 })
 
-server.listen(PORT, () => {
+servers.listen(PORT, () => {
   console.log('listen on port', 443);
   console.log(moment().format('LLLL'));
 })
