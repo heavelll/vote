@@ -2,6 +2,7 @@ const express = require("express")
 const cookieParser = require("cookie-parser")
 const multer = require("multer")
 const fsp = require("fs").promises
+const fs = require("fs")
 const svgCaptcha = require("svg-captcha")
 const path = require("path")
 const cors = require('cors')
