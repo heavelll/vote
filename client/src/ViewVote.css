@@ -1,0 +1,97 @@
+.voteContent {
+  display: inline-block;
+  
+}
+
+.deadLine {
+  color: gray; 
+}
+
+.option-ratio {
+  height: 2px;
+  width: 100%;
+  background-color: #0075FF;
+}
+
+.avatar {
+  width: 30px;
+  height: 30px;
+  display: inline-block;
+  border-radius: 9999px;
+}
+
+.nav {
+  color: gray;
+}
+a.selected {
+  color: #2598FF;
+}
+
+.viewVote {
+  position: relative;
+}
+
+.voteHead {
+  text-align: left;
+  padding: 0 20px;
+}
+
+.voteHead h2 {
+  padding-top: 10px;
+}
+
+.voteHead p {
+  font-size: 18px;
+}
+
+.voteHead span {
+  color: #0075FF;
+}
+
+.back {
+  position: absolute;
+  font-size: 25px;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 0 5px 0;
+}
+
+.viewVote ul li{
+  text-align: left;
+  list-style: none;
+}
+
+.voteLine {
+  font-size: 18px;
+  line-height: 50px;
+  padding: 0 100px 0 15px;
+  position: relative;
+}
+
+.innerVote img {
+  margin: 8px 5px 8px 0;
+}
+
+.innerVote input {
+  display: none;
+}
+
+.statistic {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.avatarZone {
+  padding: 0 5px 0 5px;
+}
+
+.checkIdt {
+  position: absolute;
+  width: 10px;
+  height: 100%;
+  left: 0;
+  background-color: lightgreen;
+}

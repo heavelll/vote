@@ -1,0 +1,182 @@
+* {
+  padding: 0;
+}
+
+html, body, #root {
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.App {
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+header {
+  font-size: 25px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.login {
+  max-width: 250px;
+}
+
+.create {
+  height: 245px;
+  background-color: #fff;
+  margin-bottom: 5px;
+}
+
+footer {
+  width: 100%;
+  height: 60px;
+  background-color: #fff;
+  position: absolute;
+  bottom: 0;
+}
+
+.nav {
+  width: 50%;
+  display: inline-block;
+  text-align: center;
+}
+
+.navicon {
+  font-size: 30px;
+  padding-top: 5px;
+}
+
+.createicon {
+  font-size: 120px;
+  padding: 30px 0 30px 0;
+}
+
+.voteList {
+  height: 40px;
+  line-height: 40px;
+  font-size: 20px;
+  text-align: left;
+  padding: 0 20px 0;
+  background-color: #fff;
+  
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.inputzone {
+  padding-top: 50px;
+}
+
+.outerVote {
+  width: 100%;
+  background-color: #fff;
+}
+
+.voteInput {
+  border: none;
+  width: 100%;
+  height: 60px;
+  outline: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.voteUpOuter {
+  width: 100%;
+  background-color: #fff;
+}
+
+.voteUpInner {
+  padding: 0 15px;
+  font-size: 18px
+}
+
+.voteTitle {
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.voteOpt {
+  text-indent: 40px;
+
+}
+
+.dltadd {
+  font-size: 25px;
+  position: absolute;
+  transform: translateY(-50%);
+  display: inline-block;
+  border: none;
+  top: 50%;
+}
+
+.optBox {
+  position: relative;
+  overflow: hidden;
+}
+
+.addOpt .dltadd {
+  top: 45%;
+}
+
+.addOpt {
+  position: relative;
+  overflow: hidden;
+  height: 30px;
+  padding-bottom: 10px;
+}
+
+.checkPart {
+  margin-top: 20px;
+  width: 100%;
+  background-color: #fff;
+}
+
+.checkBox {
+  width: 100%;
+  line-height: 50px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  position: relative;
+  width: 100%;
+}
+
+.deadLine {
+  height: 20px;
+  border: none;
+  outline: none;
+}
+
+.checkInnerPart {
+  padding: 0 15px;
+}
+
+.checkPart {
+  text-align: left;
+}
+
+.checkInput {
+  float: right;
+}
+
+.sendCreate {
+  text-align: center;
+  padding: 40px;
+}
+
+.regInLog {
+  padding-top: 15px;
+}
+
+.avatar-uploader > .ant-upload {
+  width: 128px;
+  height: 128px;
+}
+
+.notCon {
+  color: #1890FF;
+}
+
+.con {
+  color: red;
+}
