@@ -36,7 +36,7 @@ wss.on('connection', (ws, req) => {
   console.log('someone in')
   var voteId = req.url.split('/').slice(-1)[0];
   console.log('将会把投票', voteId, '的实时信息发送到客户端');
-  
+
   var voteInfo = db.get('SELECT rowid AS id, * FROM votes WHERE id = ?', voteId);
   if(moment(voteInfo.deadLine).isBefore(new Date().toISOString())) {
     ws.close();
@@ -78,7 +78,7 @@ app.use(function sessionMW(req, res, next) {
     }
   } else {
     let id = Math.random().toString(16).slice(2);
-    
+
     req.session = sessionStore[id] = {};
     res.cookie('sessionId', {
       maxAge: 86400000
@@ -102,7 +102,7 @@ app.post('/vote', async (req, res, next) => {
   if(req.user) {
     var voteInfo = req.body;
     await db.run('INSERT INTO votes VALUES (?, ?, ?, ?, ?, ?, ?)',
-    [voteInfo.title, voteInfo.desc, req.user.id, voteInfo.deadLine, 
+    [voteInfo.title, voteInfo.desc, req.user.id, voteInfo.deadLine,
       voteInfo.anonymous, new Date().toISOString(), voteInfo.isMultiple])
     let vote = await db.get('SELECT rowid AS id, * FROM votes ORDER BY id DESC LIMIT 1')
     for(var option of voteInfo.options) {
@@ -130,7 +130,7 @@ app.get('/vote/:id', async (req, res, next) => {
     let vote = await db.get("SELECT rowid AS id, * FROM votes WHERE id = ?", id);
     let votings = await db.all('SELECT votings.rowid as id, votings.*, users.name, users.avatar FROM votings JOIN users ON users.rowid = votings.userId WHERE voteId = ?', id);
     let options  =  await db.all("SELECT rowid as id, * FROM options WHERE voteId = ?", id);
-    
+
     vote.votings = votings;
     vote.options = options;
     res.json({
@@ -263,7 +263,7 @@ app.get('/userInfo', (req, res, next) => {
 app.get('/captcha', async (req, res, next) => {
   var captcha = svgCaptcha.create();
   req.session.captcha = captcha.text;
-  
+
   res.type('svg');
   res.status(200).send(captcha.data);
 })
@@ -287,7 +287,7 @@ app.get('/person/:id', async(req, res, next) => {
         let main = await db.get('select rowid as id, name, email, avatar from users where rowid = ?', req.params.id);
         let posts = await db.get('select postInfo.rowid as postId, postInfo.title, postInfo.createAt from users join postInfo where users.rowid = postInfo.ownerId and users.rowid = ? ORDER BY postInfo.rowid DESC');
         let comments = await db.get('select comments.content as comment, postInfo.title, postInfo.rowid as postId from users join comments join postInfo where users.rowid = ? and users.rowid = comments.ownerId and comments.replyTo = postInfo.rowid ORDER BY comments.rowId DESC', req.params.id);
-        
+
         res.render('person.pug', {
           code: 0,
           main: main,
@@ -299,7 +299,7 @@ app.get('/person/:id', async(req, res, next) => {
       let main = await db.get('select rowid as id, name, email, avatar from users where rowid = ?', req.params.id);
       let posts = await db.get('select postInfo.rowid as postId, postInfo.title, postInfo.createAt from users join postInfo where users.rowid = postInfo.ownerId and users.rowid = ? ORDER BY postInfo.rowid DESC');
       let comments = await db.get('select comments.content as comment, postInfo.title, postInfo.rowid as postId from users join comments join postInfo where users.rowid = ? and users.rowid = comments.ownerId and comments.replyTo = postInfo.rowid ORDER BY comments.rowId DESC', req.params.id);
-      
+
       res.render('person.pug', {
         code: 1,  //未登录 发送code1标识
         main: main,
@@ -401,3 +401,5 @@ servers.listen(PORT, () => {
   console.log('listen on port', 443);
   console.log(moment().format('LLLL'));
 })
+
+//test pr
